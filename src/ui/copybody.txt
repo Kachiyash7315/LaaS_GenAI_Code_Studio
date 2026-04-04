@@ -1,0 +1,175 @@
+<body>
+  <!-- Navbar Starts -->
+  <nav class="navbar bg-body-secondary bg-dark">
+    <div class="container">
+      <a class="navbar-brand mx-auto justify-content-center" href="#">
+        <img src="/assets/images/logo.png" alt="Bootstrap" width="30" height="30">
+      </a>
+    </div>
+  </nav>
+  <!-- Navbar Ends -->
+
+
+  <!-- Editor-desktop Starts -->
+  <div class="container-fluid editor-pc" style="height: 100%;">
+    <div class="row" style="height: 100%;">
+      <div class="col-3 left-side">
+        <!-- Left column content goes here -->
+
+        <!-- tab-pane-starts -->
+        <div class="tab-pane">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                type="button" role="tab" aria-controls="nav-home" aria-selected="true">Problem</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Settings</button>
+          </nav>
+
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+              tabindex="0">
+              <div class="ps">
+                <h3 class="mt-2">Problem Statement</h3>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+              <div class="settings">
+                <h3 class="mt-2">Settings</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- tab-pane-ends -->
+
+      </div>
+
+
+      <div class="col-9 right-side">
+        <!-- Right column content goes here -->
+        <ul class="nav" style="
+        height:5%;
+        max-height: 5%;">
+          <li class="nav-item" style="height:90%; padding: 1px !important;">
+          <li class="nav-item dropstart language-selector">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="language-mobile">Select language</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><button class="dropdown-item" onclick="selectLanguage(1)"><img class="technology-icn"
+                    src="https://img.icons8.com/color/48/null/java-coffee-cup-logo--v1.png" />
+                  Java</button></li>
+              <li><button class="dropdown-item" onclick="selectLanguage(2)"><img class="technology-icn"
+                    src="https://img.icons8.com/color/48/null/python--v1.png" /> Python</button>
+              </li>
+              <li><button class="dropdown-item" onclick="selectLanguage(3)"><img class="technology-icn"
+                    src="https://img.icons8.com/fluency/48/null/node-js.png" /> Node</button></li>
+            </ul>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="runCode()">Run</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Save</a>
+          </li>
+        </ul>
+
+        <div class="workspace bg-primary" style="height:55% !important" id="workspace-window">
+          <div id="editor" style="height:100% !important"></div>
+        </div>
+
+        <div class="console bg-success" style="height: 35%" id="terminal-window">
+          <div class="terminalx bg-dark" style="height: 100%;">
+            <div id="terminal"></div>
+          </div>
+        </div>
+
+        <div class="bottom-toolbar bg-warning p-1" style="height:5%; border-top:1px solid black; width: 100%;">
+          <ul class="nav" style="height:100%; max-height: 100%;">
+            <li class="nav-item" style="height:90%; padding: 1px !important;">
+              <button class="toggleconsole" onclick="toggleTerminalVisibility()">Console</button>
+            </li>
+          </ul>
+        </div>
+
+        
+      </div>
+
+
+
+    </div>
+  </div>
+  <!-- Editor Desktop Ends -->
+
+
+  <!-- Editor Mobile Starts -->
+
+  <div class="container-fluid editor-mobile w-100">
+    <div class="d-flex justify-content-center">
+      <div class="container">
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+          <li class="nav-item navitem" role="presentation">
+            <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button"
+              role="tab" aria-controls="desc" aria-selected="true">Description</button>
+          </li>
+          <li class="nav-item navitem" role="presentation">
+            <button class="nav-link" id="editor-tab" data-bs-toggle="tab" data-bs-target="#codeeditor" type="button"
+              role="tab" aria-controls="editor" aria-selected="false">Editor</button>
+          </li>
+          <li class="nav-item navitem" role="presentation">
+            <button class="nav-link" id="shell-tab" data-bs-toggle="tab" data-bs-target="#myshell" type="button"
+              role="tab" aria-controls="shell" aria-selected="false">Shell</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="desc" role="tabpanel" aria-labelledby="desc-tab">
+            <p>Description</p>
+          </div>
+          <div class="tab-pane fade" id="codeeditor" role="tabpanel" aria-labelledby="editor-tab">
+            <ul class="nav bg-dark" style="height:40px;max-height: 40px;">
+              <li class="nav-item" style="height:90%; padding: 1px !important;">
+              <li class="nav-item dropstart language-selector">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <span id="language">Select language</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><button class="dropdown-item" onclick="selectLanguage(1)"><img class="technology-icn"
+                        src="https://img.icons8.com/color/48/null/java-coffee-cup-logo--v1.png" />
+                      Java</button></li>
+                  <li><button class="dropdown-item" onclick="selectLanguage(2)"><img class="technology-icn"
+                        src="https://img.icons8.com/color/48/null/python--v1.png" /> Python</button>
+                  </li>
+                  <li><button class="dropdown-item" onclick="selectLanguage(3)"><img class="technology-icn"
+                        src="https://img.icons8.com/fluency/48/null/node-js.png" /> Node</button></li>
+                </ul>
+              </li>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="runCode()">Run</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Save</a>
+              </li>
+            </ul>
+            <div class="workspace" style="height: 90vh !important">
+              <div id="editor-mobile" style="height: 100%;">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="myshell" role="tabpanel" aria-labelledby="shell-tab">
+            <div id="terminalMobile"></div>
+            <div class="my-5 h-100" id="terminalMobile"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editor Mobile Ends -->
+
+
+
+</body>

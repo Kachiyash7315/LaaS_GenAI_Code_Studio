@@ -1,0 +1,17 @@
+.navbar {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    min-height: 6vh;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    font-size: 0.875rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.active{
+    background-color: transparent !important;
+    border: none !important;
+}

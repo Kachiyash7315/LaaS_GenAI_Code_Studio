@@ -1,0 +1,118 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Hide Scroll bars */
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.slide-up {
+    animation-name: slide-up;
+    animation-duration: 0.2s;
+}
+
+.setting-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+.mypage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.left-side {
+    height: 100% !important;
+    border-right: 1px solid black;
+}
+
+
+
+.bottom-toolbar {
+    margin-top: auto;
+}
+
+.technology-icn {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+/* CSS for mobile devices */
+@media only screen and (max-width: 767px) {
+
+    /* Add your CSS code for mobile devices here */
+    .editor-pc {
+        display: none;
+    }
+
+    .editor-mobile {
+        display: block;
+    }
+
+
+}
+
+/* CSS for larger devices */
+@media only screen and (min-width: 768px) {
+    /* Add your CSS code for larger devices here */
+
+    .editor-pc {
+        display: block;
+    }
+
+    .editor-mobile {
+        display: none;
+    }
+}
+
+
+.monokai-btn{
+    background: #2e2e2e; color: #e5b567; border: 1px solid #e5b567;
+}
+
+.dracula-btn{
+    background: #282a36; color:  #bd93f9; border: 1px solid  #bd93f9;
+}
+
+.twilight-btn{
+    background: #1b1b1d; color: #61eddf; border: 1px solid  #61eddf;
+}
+
+.solarized-dark-btn{
+    background: #073642; color:  #839496; border: 1px solid  #839496;
+}
+
+.solarized-light-btn{
+    background: #eee8d5; color:  #93a1a1; border: 1px solid  #93a1a1;
+}
+
