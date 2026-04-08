@@ -1,18 +1,21 @@
 import java.util.Scanner;
 
-public class HelloWorld {
-
+public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        // Creates a reader instance which takes
-        // input from standard input - keyboard
-        Scanner reader = new Scanner(System.in);
-        System.out.print("Enter a number: ");
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
 
-        // nextInt() reads the next integer from the keyboard
-        int number = reader.nextInt();
+        System.out.print("Enter your age: ");
+        int age = sc.nextInt();
 
-        // println() prints the following line to the output screen
-        System.out.println("You entered: " + number);
+        if (age >= 18) {
+            System.out.println(name + " is eligible to vote.");
+        } else {
+            System.out.println(name + " is NOT eligible to vote.");
+        }
+
+        sc.close();
     }
 }

@@ -138,4 +138,62 @@ function removeClassAndAddTheme(themeId) {
     sidebar.classList.add(themeBtnMap[themeId]);
 }
 
+// Submit handler used by the Submit button in the UI
+function submitCode() {
+    try {
+        const sb = document.getElementById('submitBtn');
+        if (sb && sb.disabled) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token') || localStorage.getItem('token');
+        let assignmentId = params.get('assignmentId') || params.get('id') || params.get('assignment');
+        if (!assignmentId) {
+            console.error('submitCode: assignmentId missing from URL');
+            alert('Submission failed: assignmentId missing in URL');
+            return;
+        }
+        if (!token) {
+            console.error('submitCode: token missing');
+            alert('Submission failed: authentication token missing (please login)');
+            return;
+        }
+
+        const code = (typeof editor !== 'undefined' && editor && typeof editor.getValue === 'function') ? editor.getValue() : '';
+        let language = 'java';
+        const languageElement = document.getElementById('language');
+        if (languageElement && languageElement.textContent && languageElement.textContent.trim() !== 'Select language') {
+            const txt = languageElement.textContent.trim().toLowerCase();
+            if (txt.includes('python')) language = 'python';
+            else if (txt.includes('node') || txt.includes('javascript')) language = 'javascript';
+            else language = 'java';
+        }
+
+        const backend = `${location.protocol}//${location.hostname}:9696`;
+        if (sb) { sb.disabled = true; sb.textContent = 'Submitting...'; }
+
+        fetch(backend + '/api/student/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'authentication': `Bearer ${token}` },
+            body: JSON.stringify({ assignmentId, code, language })
+        }).then(async (r) => {
+            const json = await r.json().catch(() => null);
+            if (!r.ok) {
+                console.error('submitCode: submit failed', r.status, json);
+                alert('Submit failed: ' + (json && json.message ? json.message : r.status));
+            } else {
+                console.log('submitCode: submit succeeded', json);
+                alert('Assignment submitted successfully');
+            }
+        }).catch((err) => {
+            console.error('submitCode: network error', err);
+            alert('Submit network error: ' + err.message);
+        }).finally(() => {
+            if (sb) { sb.disabled = false; sb.textContent = 'Submit'; }
+        });
+    } catch (err) {
+        console.error('submitCode error', err);
+        alert('Submit error: ' + (err && err.message ? err.message : 'unknown'));
+    }
+}
+
 
